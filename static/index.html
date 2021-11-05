@@ -75,16 +75,26 @@ world = {};
 function drawCircle(context,entity) {
     with(context) {
         beginPath();              
-        lineWidth = 1;
+        lineWidth = 1.5;
         var x = entity["x"];
         var y = entity["y"];
         //moveTo(x,y);
         fillStyle = entity["colour"];
         strokeStyle = fillStyle;
-        arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);  
-        //drawImage(mns, x-45, y-45, 80, 80);
-        stroke();  
-        //fill();                              
+        var height = 50;
+        var width = 50;
+
+        rect(x-width/2,y-height/2, width, height);
+        //arc(x, y, (entity["radius"])?entity["radius"]:150, 0, 2.0 * Math.PI, false);  
+        arc(x, y, (entity["radius"])?entity["radius"]:150, 10, 2.0 * Math.PI-10, false);  
+        //strokeStyle = 'rgba(180, 5, 220, 0.8)';
+        //fill();
+        shadowColor = '#5b55e6';
+        shadowBlur = 10;
+
+        //shadowOffsetY = 5;
+        //shadowOffsetX = 5;
+        stroke();                               
     }
 }
 
@@ -269,7 +279,9 @@ mouse.mousedowners.push(function(x,y,clicked,e) {
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'#333333'});
+    //addEntityWithoutName({'x':x,'y':y,'colour':'#333333'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'#736fd1'});
+    
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
